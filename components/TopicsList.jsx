@@ -23,6 +23,12 @@ const getTopics = async () => {
 export default async function TopicsList() {
   const { topics } = await getTopics();
 
+  if (!topics) {
+    // Manejar el caso en el que topics es undefined o no tiene el formato esperado
+    console.error("Topics is undefined or has unexpected format");
+    return null;
+  }
+  
   return (
     <>
       {topics.map((t) => (
